@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Satoshi Vision - Open-source tools and technology for Bitcoin SV.">
+
+    <meta name="description" content="Satoshi Vision - Independent Bitcoin SV software development, technology and projects.">
+
+    <meta name="theme-color" content="#111214">
+
     <title>Satoshi Vision | Bitcoin SV Technology</title>
+
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -20,9 +29,16 @@
             line-height: 1.7;
         }
 
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
         header {
+            background: #111214;
             border-bottom: 1px solid #303236;
-            padding: 22px 7%;
+            padding: 16px 6%;
         }
 
         nav {
@@ -33,55 +49,56 @@
             margin: auto;
         }
 
-        .brand {
+        .brand img {
+            display: block;
+            width: 220px;
+            max-width: 45vw;
+            height: auto;
+        }
+
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 21px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            gap: 30px;
         }
 
-        .logo {
-            width: 36px;
-            height: 36px;
-            border: 5px solid #ff8800;
-            border-radius: 50%;
-        }
-
-        nav a {
-            color: #cccccc;
-            text-decoration: none;
-            margin-left: 28px;
+        .nav-links a {
+            color: #c5c5c5;
             font-size: 14px;
+            transition: color 0.2s;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: #ff8800;
         }
 
+        /* HERO */
+
         .hero {
             text-align: center;
-            padding: 115px 20px 125px;
-            background: radial-gradient(
-                ellipse at center,
-                #29231b 0%,
-                #111214 65%
-            );
+            padding: 125px 20px 135px;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 45%,
+                    #30251a 0%,
+                    #191817 35%,
+                    #111214 75%
+                );
         }
 
         .hero-label {
             color: #ff8800;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             font-size: 12px;
             font-weight: bold;
         }
 
         h1 {
             font-size: clamp(42px, 7vw, 76px);
-            line-height: 1.1;
-            margin: 24px 0;
+            line-height: 1.12;
+            margin: 25px 0;
             letter-spacing: -2px;
         }
 
@@ -91,31 +108,37 @@
 
         .hero p {
             color: #b5b5b5;
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto 35px;
             font-size: 18px;
         }
 
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
         .button {
             display: inline-block;
-            padding: 13px 27px;
+            padding: 13px 28px;
             background: #ff8800;
             color: #111214;
-            text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            margin: 6px;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
 
         .button:hover {
             background: #ffaa33;
+            transform: translateY(-2px);
         }
 
         .button.secondary {
             background: transparent;
             border: 1px solid #626262;
-            color: white;
+            color: #ffffff;
         }
 
         .button.secondary:hover {
@@ -123,74 +146,153 @@
             color: #ff8800;
         }
 
+        /* SECTIONS */
+
         .section {
             max-width: 1100px;
             margin: auto;
-            padding: 75px 25px;
+            padding: 85px 25px;
         }
 
         .section h2 {
-            font-size: 32px;
+            font-size: 34px;
             margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .section h2 span {
+            color: #ff8800;
         }
 
         .section-intro {
             color: #aaaaaa;
-            max-width: 700px;
-            margin-bottom: 35px;
+            max-width: 750px;
+            margin-bottom: 38px;
+            font-size: 16px;
         }
+
+        /* PROJECT CARDS */
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(260px, 1fr)
+            );
+            gap: 24px;
         }
 
         .card {
             background: #1c1e21;
             border: 1px solid #35373a;
-            padding: 28px;
+            padding: 32px;
             border-radius: 8px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: #ff8800;
+            transform: translateY(-3px);
         }
 
         .card h3 {
             color: #ff8800;
-            margin-bottom: 12px;
-            font-size: 20px;
+            margin-bottom: 14px;
+            font-size: 21px;
         }
 
         .card p {
             color: #aaaaaa;
             font-size: 15px;
+            min-height: 75px;
         }
 
         .card a {
             display: inline-block;
             color: #ff8800;
-            margin-top: 18px;
-            text-decoration: none;
+            margin-top: 22px;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        footer {
+        .card a:hover {
+            color: #ffaa33;
+        }
+
+        /* ABOUT */
+
+        .about-section {
+            background: #181a1d;
             border-top: 1px solid #303236;
-            padding: 30px 20px;
+            border-bottom: 1px solid #303236;
+        }
+
+        .about-content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .about-content p {
+            color: #aaaaaa;
+            max-width: 780px;
+            font-size: 16px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
             text-align: center;
             color: #777777;
             font-size: 13px;
         }
 
-        @media (max-width: 600px) {
+        footer a {
+            color: #ff8800;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+            header {
+                padding: 15px 20px;
+            }
+
             nav {
                 flex-direction: column;
                 gap: 15px;
             }
 
-            nav a {
-                margin: 0 9px;
+            .brand img {
+                width: 200px;
+                max-width: 80vw;
+            }
+
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .hero {
-                padding: 85px 20px;
+                padding: 90px 20px 100px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 65px 22px;
+            }
+
+            .section h2 {
+                font-size: 29px;
+            }
+
+            .card p {
+                min-height: auto;
             }
         }
     </style>
@@ -200,88 +302,158 @@
 
 <header>
     <nav>
-        <div class="brand">
-            <div class="logo"></div>
-            SATOSHI VISION
-        </div>
-        <div>
+        <a class="brand" href="#">
+            <img
+                src="theme/img/satoshivisionwhiteorangeicon.png"
+                alt="Satoshi Vision"
+            >
+        </a>
+
+        <div class="nav-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="https://github.com/TruthMachine">GitHub</a>
+            <a href="https://github.com/TruthMachine">
+                GitHub
+            </a>
         </div>
     </nav>
 </header>
 
 <main>
-    <section class="hero">
-        <div class="hero-label">Open Source · Bitcoin SV</div>
 
-        <h1>Building for the<br><span>Satoshi Vision.</span></h1>
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-label">
+            Bitcoin SV Technology
+        </div>
+
+        <h1>
+            Advancing the<br>
+            <span>Satoshi Vision.</span>
+        </h1>
 
         <p>
-            Independent development of open-source Bitcoin SV
-            software, tools and technology.
+            Independent development of Bitcoin SV software,
+            tools and technology, building on the original
+            vision of peer-to-peer electronic cash.
         </p>
 
-        <a class="button"
-           href="https://github.com/TruthMachine">
-            Explore GitHub
-        </a>
+        <div class="hero-buttons">
+            <a
+                class="button"
+                href="#projects"
+            >
+                Explore Projects
+            </a>
 
-        <a class="button secondary" href="#projects">
-            Our Projects
-        </a>
+            <a
+                class="button secondary"
+                href="https://github.com/TruthMachine"
+            >
+                GitHub
+            </a>
+        </div>
+
     </section>
 
-    <section class="section" id="about">
-        <h2>About Satoshi Vision</h2>
-        <p class="section-intro">
-            Satoshi Vision is an independent software development
-            initiative focused on building practical tools and
-            infrastructure for the Bitcoin SV ecosystem.
-            Our goal is to develop accessible, open-source
-            technology that supports the original vision of
-            peer-to-peer electronic cash.
-        </p>
+    <!-- ABOUT -->
+
+    <section class="about-section" id="about">
+
+        <div class="about-content">
+
+            <h2>
+                About <span>Satoshi Vision</span>
+            </h2>
+
+            <p>
+                Satoshi Vision is an independent software
+                development initiative focused on Bitcoin SV.
+
+                Our work encompasses wallet technology,
+                transaction security, offline signing and
+                tools designed to support the Bitcoin
+                ecosystem.
+
+                We believe in the importance of individual
+                control, security and the original principles
+                of peer-to-peer electronic cash.
+            </p>
+
+        </div>
+
     </section>
+
+    <!-- PROJECTS -->
 
     <section class="section" id="projects">
-        <h2>Projects</h2>
+
+        <h2>
+            Our <span>Projects</span>
+        </h2>
+
         <p class="section-intro">
-            Explore our software development and open-source work.
+            Developing software and practical tools for
+            the Bitcoin SV ecosystem.
         </p>
 
         <div class="cards">
+
             <div class="card">
+
                 <h3>Satoshi Vision Signer</h3>
+
                 <p>
-                    An independent offline signing project
-                    focused on secure transaction signing
-                    and air-gapped operation.
+                    An offline transaction signing project
+                    focused on air-gapped operation,
+                    security and independent control
+                    of private keys.
                 </p>
+
                 <a href="https://github.com/TruthMachine/ElectrumSVP-Signer">
-                    View Source Code →
+                    Explore Signer →
                 </a>
+
             </div>
 
             <div class="card">
+
                 <h3>ElectrumSVP</h3>
+
                 <p>
-                    A lightweight Bitcoin SV wallet with
-                    a focus on SPV verification, privacy
-                    and user control.
+                    A lightweight Bitcoin SV wallet
+                    featuring SPV verification, privacy
+                    features and user-controlled
+                    transaction management.
                 </p>
-                <a href="https://github.com/TruthMachine/ElectrumSV">
-                    View Source Code →
+
+                <a href="https://github.com/TruthMachine/ElectrumSVP">
+                    Explore ElectrumSVP →
                 </a>
+
             </div>
+
         </div>
+
     </section>
+
 </main>
 
+<!-- FOOTER -->
+
 <footer>
-    <p>© 2026 Satoshi Vision · Open Source Development</p>
+
+    <p>
+        © 2026 Satoshi Vision.
+        <a href="https://github.com/TruthMachine">
+            TruthMachine
+        </a>
+    </p>
+
 </footer>
 
 </body>
 </html>
+
